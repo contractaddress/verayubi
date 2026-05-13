@@ -38,6 +38,8 @@ mount_vol() {
 
     MOUNTPOINT="/run/media/$USER/priv"
     KEYFILE=$(mktemp -p /dev/shm)
+    trap 'shred -u "$KEYFILE" 2>/dev/null' EXIT
+
 
     if [ ! -d "$MOUNTPOINT" ]; then
         sudo mkdir -p "$MOUNTPOINT"
@@ -47,8 +49,6 @@ mount_vol() {
     ykman otp calculate 2 "$CHALLENGE" > "$KEYFILE"
 
     veracrypt --text --keyfiles="$KEYFILE" --protect-hidden=no "$CONTAINER" "$MOUNTPOINT"
-
-    trap 'shred -u "$KEYFILE" 2>/dev/null' EXIT
 
     echo "Mounted at $MOUNTPOINT"
     #nautilus -w $MOUNTPOINT or whatever file manager u use
