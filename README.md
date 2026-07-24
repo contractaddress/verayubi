@@ -3,7 +3,7 @@ Verayubi is a script for creating/managing VeraCrypt containers secured by a Yub
 
 ![verayubi-thumnail](public/verayubi.png)
 
-### If you'd like to know more read my blog post @ {placeholder}
+### If you'd like to know more read my blog post @ [greyloot.ch](https://greyloot.ch/blog/yubikey-veracrypt-containers/)
 
 ---
 ### Prerequisites:

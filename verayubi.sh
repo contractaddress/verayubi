@@ -52,6 +52,11 @@ mount_vol() {
 
     echo "Mounted at $MOUNTPOINT"
     #nautilus -w $MOUNTPOINT or whatever file manager u use
+    echo "Press Ctrl+C to unmount and detach"
+
+    trap 'unmount_vol; exit' INT TERM
+
+    sleep infinity
 }
 
 unmount_vol() {
